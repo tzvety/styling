@@ -1,20 +1,29 @@
 const path = require('path');
+const pages = require('./dev/pages');
+
 
 module.exports = {
+  mode: 'none',
   entry: './dev/app.js',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
-devServer: {
+
+  devServer: {
     publicPath: '/', // Live-reload
     contentBase: 'dist/', // Relative directory for base of server
     inline: true,
     port: 3000,
     historyApiFallback: true
   },
+
+  plugins: [...pages.generatePages(path.resolve(__dirname, path.join(__dirname, './dev/views')))],
+
   module: {
+    
     rules: [
+
       {
         test: /\.(scss)$/,
         use: [
