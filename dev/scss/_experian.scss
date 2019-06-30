@@ -9,23 +9,45 @@
     Colors
 ----------------------------------------------------- */
 
-    $exp-colors: (
-        'exp-dark-blue': rgb(38, 71, 141),
-        'exp-light-blue': rgb(64, 110, 179),
-        'exp-violet': rgb(99, 38, 120),
-        'exp-purple': rgb(152, 40, 129),
-        'exp-pink': rgb(186, 47, 125),
+    $exp-dark-blue:  rgb(38, 71, 141) !default;
+    $exp-light-blue: rgb(64, 110, 179) !default;
+    $exp-violet:     rgb(99, 38, 120) !default;
+    $exp-purple:     rgb(152, 40, 129) !default;
+    $exp-pink:       rgb(186, 47, 125) !default;
 
-        'exp-red': rgb(203, 18, 62),
-        'exp-orange': rgb(242, 141, 48),
-        'exp-yellow': rgb(253, 217, 0),
-        'exp-green': rgb(182, 189, 13),
-        'exp-sapphire': rgb(0, 129, 167),
-        'exp-dark-grey': rgb(87, 87, 86),
-        'exp-medium-grey': rgb(208, 208, 208),
-        'exp-light-grey': rgb(244, 246, 244),
-        'exp-white': rgb(255, 255, 255),
+    $exp-red:        rgb(203, 18, 62) !default;
+    $exp-orange:     rgb(242, 141, 48) !default;
+    $exp-yellow:     rgb(253, 217, 0) !default;
+    $exp-green:      rgb(182, 189, 13) !default;
+    $exp-sapphire:   rgb(0, 129, 167) !default;
+    $exp-dark-grey:  rgb(87, 87, 86) !default;
+    $exp-medium-grey:rgb(208, 208, 208) !default;
+    $exp-light-grey: rgb(244, 246, 244) !default;
+    $exp-white:      rgb(255, 255, 255) !default;
+
+    $exp-colors: () !default;
+
+    $exp-colors: map-merge(
+    (
+        "exp-dark-blue":    $exp-dark-blue,
+        "exp-light-blue":   $exp-light-blue,
+        "exp-violet":       $exp-violet,
+        "exp-purple":       $exp-purple,
+        "exp-pink":         $exp-pink,
+        "exp-red":          $exp-red,
+        "exp-orange":       $exp-orange,
+        "exp-yellow":       $exp-yellow,
+        "exp-green":        $exp-green,
+        "exp-sapphire":     $exp-sapphire,
+        "exp-dark-grey":    $exp-dark-grey,
+        "exp-medium-grey":  $exp-medium-grey,
+        "exp-light-grey":   $exp-light-grey,
+        "exp-white":        $exp-white,
+        
+    ),
+    $exp-colors
     );
+
 
 /* ---------------------------------------------------
     Fonts
@@ -132,23 +154,50 @@
         h1 { 
             @include make-font(100); 
             font-size: 4.375em;
-            color: exp-colors('exp-dark-grey');
+            color: exp-colors("exp-dark-grey");
             letter-spacing: 0;
             line-height: 4.688rem;
         }
 
         h2 {
             @include make-font(100); 
-            font-size: 3.750rem;
-            color: exp-colors('exp-dark-grey');
+            font-size: 3.75rem;
+            color: $exp-dark-grey;
             letter-spacing: 0;
             line-height: 4.25rem;
         }
 
-        h3 {}
-        h4 {}
-        h5 {}
-        h6 {}
+        h3 {
+            @include make-font(100); 
+            font-size:  2.063em;
+            color: $exp-dark-grey;
+            letter-spacing: 0.8px;
+            line-height: 2.5rem;
+        }
+
+        h4 {
+            @include make-font(300); 
+            font-size:  1.75rem;
+            color: $exp-dark-grey;
+            letter-spacing: 0.3px;
+            line-height: 1.25rem;
+        }
+        
+        h5 {
+            @include make-font(400); 
+            font-size:  1.125rem;
+            color: $exp-light-blue;
+            letter-spacing: 0.4px;
+            line-height: 1.438rem;
+        }
+
+        // h6 {
+        //     @include make-font(100); 
+        //     font-size:  1.75rem;
+        //     color: exp-colors("exp-dark-grey");
+        //     letter-spacing: 0.3px;
+        //     line-height: 1.25rem;
+        // }
 
     // Borders
         .exp-rounded-top { @include border-top-radius($exp-border-radius); }
