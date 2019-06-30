@@ -1,0 +1,161 @@
+/* ---------------------------------------------------
+    Variables
+----------------------------------------------------- */
+
+    $exp-border-width: .0625rem;
+    $exp-border-radius: .375rem;
+
+/* ---------------------------------------------------
+    Colors
+----------------------------------------------------- */
+
+    $exp-colors: (
+        'exp-dark-blue': rgb(38, 71, 141),
+        'exp-light-blue': rgb(64, 110, 179),
+        'exp-violet': rgb(99, 38, 120),
+        'exp-purple': rgb(152, 40, 129),
+        'exp-pink': rgb(186, 47, 125),
+
+        'exp-red': rgb(203, 18, 62),
+        'exp-orange': rgb(242, 141, 48),
+        'exp-yellow': rgb(253, 217, 0),
+        'exp-green': rgb(182, 189, 13),
+        'exp-sapphire': rgb(0, 129, 167),
+        'exp-dark-grey': rgb(87, 87, 86),
+        'exp-medium-grey': rgb(208, 208, 208),
+        'exp-light-grey': rgb(244, 246, 244),
+        'exp-white': rgb(255, 255, 255),
+    );
+
+/* ---------------------------------------------------
+    Fonts
+----------------------------------------------------- */
+
+    // Roboto Thin (latin + ext)
+    @font-face {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 100;
+        src: url('../fonts/roboto-v19-latin-ext_latin-100.eot');
+        src: local('Roboto Thin'), local('Roboto-Thin'),
+                url('../fonts/roboto-v19-latin-ext_latin-100.eot?#iefix') format('embedded-opentype'),
+                url('../fonts/roboto-v19-latin-ext_latin-100.woff2') format('woff2'),
+                url('../fonts/roboto-v19-latin-ext_latin-100.woff') format('woff'),
+                url('../fonts/roboto-v19-latin-ext_latin-100.ttf') format('truetype'),
+                url('../fonts/roboto-v19-latin-ext_latin-100.svg#Roboto') format('svg');
+    }
+
+    // Roboto Light (latin + ext)
+    @font-face {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 300;
+        src: url('../fonts/roboto-v19-latin-ext_latin-300.eot'); 
+        src: local('Roboto Light'), local('Roboto-Light'),
+                url('../fonts/roboto-v19-latin-ext_latin-300.eot?#iefix') format('embedded-opentype'),
+                url('../fonts/roboto-v19-latin-ext_latin-300.woff2') format('woff2'),
+                url('../fonts/roboto-v19-latin-ext_latin-300.woff') format('woff'),
+                url('../fonts/roboto-v19-latin-ext_latin-300.ttf') format('truetype'),
+                url('../fonts/roboto-v19-latin-ext_latin-300.svg#Roboto') format('svg');
+    }
+
+    // Roboto Regular (latin + ext)
+    @font-face {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        src: url('../fonts/roboto-v19-latin-ext_latin-regular.eot'); 
+        src: local('Roboto'), local('Roboto-Regular'),
+                url('../fonts/roboto-v19-latin-ext_latin-regular.eot?#iefix') format('embedded-opentype'),
+                url('../fonts/roboto-v19-latin-ext_latin-regular.woff2') format('woff2'),
+                url('../fonts/roboto-v19-latin-ext_latin-regular.woff') format('woff'),
+                url('../fonts/roboto-v19-latin-ext_latin-regular.ttf') format('truetype'),
+                url('../fonts/roboto-v19-latin-ext_latin-regular.svg#Roboto') format('svg');
+    }
+
+    // Roboto Medium (latin + ext)
+    @font-face {
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 500;
+        src: url('../fonts/roboto-v19-latin-ext_latin-500.eot'); 
+        src: local('Roboto Medium'), local('Roboto-Medium'),
+                url('../fonts/roboto-v19-latin-ext_latin-500.eot?#iefix') format('embedded-opentype'),
+                url('../fonts/roboto-v19-latin-ext_latin-500.woff2') format('woff2'),
+                url('../fonts/roboto-v19-latin-ext_latin-500.woff') format('woff'),
+                url('../fonts/roboto-v19-latin-ext_latin-500.ttf') format('truetype'),
+                url('../fonts/roboto-v19-latin-ext_latin-500.svg#Roboto') format('svg');
+    }
+
+/* ---------------------------------------------------
+    Mixins
+----------------------------------------------------- */
+    @mixin make-font($weight) {
+        font-family: 'Roboto'; 
+        font-style: normal; 
+        font-weight: $weight;
+    }
+
+    @mixin bg-outline-variant($color, $value) {
+        .bg-outline-#{$color} {
+            color: $value;
+            border-color: $value;
+            border-width: $exp-border-width;
+            border-style: solid;
+        }
+    }
+
+/* ---------------------------------------------------
+    UI Build
+----------------------------------------------------- */
+    // Colored Backgrounds
+        @each $color, $value in $exp-colors {
+            @include bg-variant(".bg-#{$color}", $value);
+        }
+        
+        @each $color, $value in $exp-colors {
+            @include bg-outline-variant($color, $value);
+        }
+
+    // Text colors
+        @each $color, $value in $exp-colors {
+            @include text-emphasis-variant(".text-#{$color}", $value);
+        }
+
+    // Font faces
+        .exp-font-t { @include make-font(100); }
+        .exp-font-l { @include make-font(300); }
+        .exp-font-r { @include make-font(400); }
+        .exp-font-m { @include make-font(500); }
+
+    // Headings
+        h1 { 
+            @include make-font(100); 
+            font-size: 4.375em;
+            color: exp-colors('exp-dark-grey');
+            letter-spacing: 0;
+            line-height: 4.688rem;
+        }
+
+        h2 {
+            @include make-font(100); 
+            font-size: 3.750rem;
+            color: exp-colors('exp-dark-grey');
+            letter-spacing: 0;
+            line-height: 4.25rem;
+        }
+
+        h3 {}
+        h4 {}
+        h5 {}
+        h6 {}
+
+    // Borders
+        .exp-rounded-top { @include border-top-radius($exp-border-radius); }
+        .exp-rounded-right { @include border-right-radius($exp-border-radius); }
+        .exp-rounded-bottom { @include border-bottom-radius($exp-border-radius); }
+        .exp-rounded-left { @include border-left-radius($exp-border-radius); }
+        .exp-rounded {
+            @include border-top-radius($exp-border-radius); 
+            @include border-bottom-radius($exp-border-radius);
+        }

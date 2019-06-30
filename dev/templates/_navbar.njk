@@ -1,5 +1,10 @@
 <nav class="nav flex-column">
-  <a class="nav-link" href="alerts.html">Alerts</a>
+  <a class="nav-link {% if title == 'colors' %}active{% endif %}" href="colors.html">Colors</a>
+  <a class="nav-link {% if title == 'borders' %}active{% endif %}" href="borders.html">Borders</a>
+  <a class="nav-link {% if title == 'typography' %}active{% endif %}" href="typography.html">Typography</a>
+
+
+  {# <a class="nav-link" href="alerts.html">Alerts</a>
   <a class="nav-link" href="badge.html">Badges</a>
   <a class="nav-link" href="breadcrumb.html">Breadcrumb</a>
   <a class="nav-link" href="button-group.html">Button Group</a>
@@ -13,6 +18,6 @@
   <a class="nav-link" href="navs.html">Navs</a>
   <a class="nav-link" href="pagination.html">Pagination</a>
   <a class="nav-link" href="tables.html">Tables</a>
-  <a class="nav-link" href="toasts.html">Toasts</a>
-  <a class="nav-link" href="typography.html">Typography</a>
+  <a class="nav-link" href="toasts.html">Toasts</a> #}
+
 </nav>

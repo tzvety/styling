@@ -1,0 +1,56 @@
+{% extends "../templates/layout.njk" %}
+{% set title="colors" %}
+
+{% set primaryColors = ['exp-dark-blue', 'exp-light-blue', 'exp-violet', 'exp-purple', 'exp-pink'] %}
+{% set secondaryColors = ['exp-red', 'exp-orange', 'exp-yellow', 'exp-green', 'exp-sapphire', 'exp-dark-grey', 'exp-medium-grey', 'exp-light-grey', 'exp-white'] %}
+
+{% block content %}
+    <div class="row">
+        {% for color in primaryColors %}
+            <div class="col-2 mt-4">
+                <div class="p-4 exp-rounded bg-{{ color }} text-white">
+                    <small>.bg-{{ color }}</small>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="row">
+        {% for color in primaryColors %}
+            <div class="col-2 mt-4">
+                <div class="p-4 exp-rounded bg-outline-{{ color }}">
+                    <small>.bg-outline-{{ color }}</small>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="row mt-4">
+        {% for color in primaryColors %}
+            <div class="col-12">
+                <h5 class="text-{{ color }} d-inline">Grumpy wizards make toxic brew for the evil Queen and Jack. One morning, when Gregor...</h5> <small>(.text-{{ color }})</small>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="row mt-4">
+        {% for color in secondaryColors %}
+            <div class="col-2 mt-4">
+                <div class="p-4 exp-rounded bg-{{ color }}">
+                    <small>.bg-{{ color }}</small>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="row mt-4">
+        {% for color in secondaryColors %}
+            <div class="col-12">
+                <h5 class="text-{{ color }} d-inline">Grumpy wizards make toxic brew for the evil Queen and Jack. One morning, when Gregor...</h5> <small>(.text-{{ color }})</small>
+            </div>
+        {% endfor %}
+    </div>
+
+
+
+{% endblock %}

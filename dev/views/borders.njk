@@ -1,0 +1,68 @@
+{% extends "../templates/layout.njk" %}
+{% set title="borders" %}
+
+{% set primaryColors = ['exp-dark-blue', 'exp-light-blue', 'exp-violet', 'exp-purple', 'exp-pink'] %}
+
+{% block content %}
+    <div class="row mt-4">
+        <div class="col-12">
+            <h5>.exp-rounded <span class="text-exp-medium-grey">(border-radius is set to 6px) (Bootstrap's border-radius is 4px)</span></h5>
+        </div>
+    </div>
+    <div class="row">
+         {% for color in primaryColors %}
+            <div class="col-1 mt-1">
+                <div class="bg-{{ color }} exp-rounded p-4"><br/><br/></div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="row mt-4">
+        <div class="col-12">
+            <h5>.exp-rounded-top <span class="text-exp-medium-grey">(border-radius is set to 6px) (Bootstrap's border-radius is 4px)</span></h5>
+        </div>
+    </div>
+    <div class="row">
+         {% for color in primaryColors %}
+            <div class="col-1 mt-1">
+                <div class="bg-{{ color }} exp-rounded-top p-4"><br/><br/></div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="row mt-4">
+        <div class="col-12">
+            <h5>.exp-rounded-right <span class="text-exp-medium-grey">(border-radius is set to 6px) (Bootstrap's border-radius is 4px)</span></h5>
+        </div>
+    </div>
+    <div class="row">
+         {% for color in primaryColors %}
+            <div class="col-1 mt-1">
+                <div class="bg-{{ color }} exp-rounded-right p-4"><br/><br/></div>
+            </div>
+        {% endfor %}
+    </div>    
+    <div class="row mt-4">
+        <div class="col-12">
+            <h5>.exp-rounded-bottom <span class="text-exp-medium-grey">(border-radius is set to 6px) (Bootstrap's border-radius is 4px)</span></h5>
+        </div>
+    </div>
+    <div class="row">
+         {% for color in primaryColors %}
+            <div class="col-1 mt-1">
+                <div class="bg-{{ color }} exp-rounded-bottom p-4"><br/><br/></div>
+            </div>
+        {% endfor %}
+    </div> 
+    <div class="row mt-4">
+        <div class="col-12">
+            <h5>.exp-rounded-left <span class="text-exp-medium-grey">(border-radius is set to 6px) (Bootstrap's border-radius is 4px)</span></h5>
+        </div>
+    </div>
+    <div class="row">
+         {% for color in primaryColors %}
+            <div class="col-1 mt-1">
+                <div class="bg-{{ color }} exp-rounded-left p-4"><br/><br/></div>
+            </div>
+        {% endfor %}
+    </div> 
+
+{% endblock %}

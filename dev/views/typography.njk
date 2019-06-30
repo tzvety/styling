@@ -1,30 +1,29 @@
 {% extends "../templates/layout.njk" %}
+{% set title="typography" %}
 
 {% block content %}
+    <div class="row mt-4">
+        <div class="col-12">
+            <p class="exp-font-t">Roboto Thin example uses <span class="text-exp-purple">.exp-font-t</span></p>
+            <p class="exp-font-l">Roboto Light example uses <span class="text-exp-purple">.exp-font-l</span></p>
+            <p class="exp-font-r">Roboto Regular example uses <span class="text-exp-purple">.exp-font-r</span></p>
+            <p class="exp-font-m">Roboto Medium example uses <span class="text-exp-purple">.exp-font-m</span></p>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-12">
+            <h1>Experian H1 must be used in <span class="text-exp-purple">headline &amp; hero</span></h1>
+            <h2>Experian H2 must be used in <span class="text-exp-purple">titles or section titles</span></h2>
+            <h3>Experian H3 must be used in <span class="text-exp-purple">category header (topics/bucket title), sub headline for H1</span></h3>
+            <h4>Experian H4 must be used in <span class="text-exp-purple">subhead for H2</span></h4>
+            <h5>Experian H5 must be used in <span class="text-exp-purple">subcategory header (article titles)</span></h5>
+            <h6>Experian H6 must be used in <span class="text-exp-purple">subhead for H3</span></h6>
+        </div>
+    </div>
+    
+{% endblock %}
 
-<main class="col-12 col-md-9 col-xl-8 py-md-3 pl-md-5 bd-content" role="main">
-          <h1 class="bd-title" id="content">Typography</h1>
-          <p class="bd-lead">Documentation and examples for Bootstrap typography, including global settings, headings, body text, lists, and more.</p>
-          <script async src="https://cdn.carbonads.com/carbon.js?serve=CKYIKKJL&placement=getbootstrapcom" id="_carbonads_js"></script>
-
-          <h2 id="global-settings">Global settings</h2>
-
-<p>Bootstrap sets basic global display, typography, and link styles. When more control is needed, check out the <a href="/docs/4.3/utilities/text/">textual utility classes</a>.</p>
-
-<ul>
-  <li>Use a <a href="/docs/4.3/content/reboot/#native-font-stack">native font stack</a> that selects the best <code class="highlighter-rouge">font-family</code> for each OS and device.</li>
-  <li>For a more inclusive and accessible type scale, we assume the browser default root <code class="highlighter-rouge">font-size</code> (typically 16px) so visitors can customize their browser defaults as needed.</li>
-  <li>Use the <code class="highlighter-rouge">$font-family-base</code>, <code class="highlighter-rouge">$font-size-base</code>, and <code class="highlighter-rouge">$line-height-base</code> attributes as our typographic base applied to the <code class="highlighter-rouge">&lt;body&gt;</code>.</li>
-  <li>Set the global link color via <code class="highlighter-rouge">$link-color</code> and apply link underlines only on <code class="highlighter-rouge">:hover</code>.</li>
-  <li>Use <code class="highlighter-rouge">$body-bg</code> to set a <code class="highlighter-rouge">background-color</code> on the <code class="highlighter-rouge">&lt;body&gt;</code> (<code class="highlighter-rouge">#fff</code> by default).</li>
-</ul>
-
-<p>These styles can be found within <code class="highlighter-rouge">_reboot.scss</code>, and the global variables are defined in <code class="highlighter-rouge">_variables.scss</code>. Make sure to set <code class="highlighter-rouge">$font-size-base</code> in <code class="highlighter-rouge">rem</code>.</p>
-
-<h2 id="headings">Headings</h2>
-
-<p>All HTML headings, <code class="highlighter-rouge">&lt;h1&gt;</code> through <code class="highlighter-rouge">&lt;h6&gt;</code>, are available.</p>
-
+{# 
 <table>
   <thead>
     <tr>
@@ -78,15 +77,14 @@
   </tbody>
 </table>
 
-<figure class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;h1&gt;</span>h1. Bootstrap heading<span class="nt">&lt;/h1&gt;</span>
+
+
+<p><code class="highlighter-rouge">.h1</code> through <code class="highlighter-rouge">.h6</code> classes are also available, for when you want to match the font styling of a heading but cannot use the associated HTML element.</p>
 <span class="nt">&lt;h2&gt;</span>h2. Bootstrap heading<span class="nt">&lt;/h2&gt;</span>
 <span class="nt">&lt;h3&gt;</span>h3. Bootstrap heading<span class="nt">&lt;/h3&gt;</span>
 <span class="nt">&lt;h4&gt;</span>h4. Bootstrap heading<span class="nt">&lt;/h4&gt;</span>
 <span class="nt">&lt;h5&gt;</span>h5. Bootstrap heading<span class="nt">&lt;/h5&gt;</span>
-<span class="nt">&lt;h6&gt;</span>h6. Bootstrap heading<span class="nt">&lt;/h6&gt;</span></code></pre></figure>
-
-<p><code class="highlighter-rouge">.h1</code> through <code class="highlighter-rouge">.h6</code> classes are also available, for when you want to match the font styling of a heading but cannot use the associated HTML element.</p>
-
+<span class="nt">&lt;h6&gt;</span>h6. Bootstrap heading<span class="nt">&lt;/h6&gt;</span>
 <div class="bd-example">
 <p class="h1">h1. Bootstrap heading</p>
 <p class="h2">h2. Bootstrap heading</p>
@@ -373,9 +371,6 @@
 
 <h2 id="responsive-font-sizes">Responsive font sizes</h2>
 
-<p>Bootstrap v4.3 ships with the option to enable responsive font sizes, allowing text to scale more naturally across device and viewport sizes. <abbr title="Responsive font sizes">RFS</abbr> can be enabled by changing the <code class="highlighter-rouge">$enable-responsive-font-sizes</code> Sass variable to <code class="highlighter-rouge">true</code> and recompiling Bootstrap.</p>
+<p>Bootstrap v4.3 ships with the option to enable responsive font sizes, allowing text to scale more naturally across device and viewport sizes. <abbr title="Responsive font sizes">RFS</abbr> can be enabled by changing the <code class="highlighter-rouge">$enable-responsive-font-sizes</code> Sass variable to <code class="highlighter-rouge">true</code> and recompiling Bootstrap.</p> #}
 
-<p>To support <abbr title="Responsive font sizes">RFS</abbr>, we use a Sass mixin to replace our normal <code class="highlighter-rouge">font-size</code> properties. Responsive font sizes will be compiled into <code class="highlighter-rouge">calc()</code> functions with a mix of <code class="highlighter-rouge">rem</code> and viewport units to enable the responsive scaling behavior. More about <abbr title="Responsive font sizes">RFS</abbr> and its configuration can be found on its <a href="https://github.com/twbs/rfs">GitHub repository</a>.</p>
 
-        </main>
-{% endblock %}

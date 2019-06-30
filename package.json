@@ -24,6 +24,7 @@
     "chokidar": "^3.0.1",
     "css-loader": "^3.0.0",
     "extract-loader": "^3.1.0",
+    "file-loader": "^4.0.0",
     "node-sass": "^4.12.0",
     "nunjucks": "^3.2.0",
     "nunjucks-webpack-plugin": "^1.0.0",
