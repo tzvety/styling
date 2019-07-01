@@ -6,7 +6,7 @@
     $exp-border-radius: .375rem;
 
 /* ---------------------------------------------------
-    Colors
+    Color Mapping
 ----------------------------------------------------- */
 
     $exp-dark-blue:  rgb(38, 71, 141) !default;
@@ -24,6 +24,7 @@
     $exp-medium-grey:rgb(208, 208, 208) !default;
     $exp-light-grey: rgb(244, 246, 244) !default;
     $exp-white:      rgb(255, 255, 255) !default;
+    $exp-black:      rgb(0, 0, 0) !default;
 
     $exp-colors: () !default;
 
@@ -43,11 +44,10 @@
         "exp-medium-grey":  $exp-medium-grey,
         "exp-light-grey":   $exp-light-grey,
         "exp-white":        $exp-white,
-        
+        "exp-black":        $exp-black
     ),
     $exp-colors
     );
-
 
 /* ---------------------------------------------------
     Fonts
@@ -109,9 +109,369 @@
                 url('../fonts/roboto-v19-latin-ext_latin-500.svg#Roboto') format('svg');
     }
 
+    // Icons Font
+    @font-face {
+        font-family: experian-icons;
+        src: url('../fonts/experian-icons.eot');
+        src: 
+            url('../fonts/experian-icons-iefix.eot') format("embedded-opentype"), 
+            url('../fonts/experian-icons.woff2') format("woff2"),
+            url('../fonts/experian-icons.ttf') format("truetype"),
+            url('../fonts/experian-icons.woff') format("woff");
+        font-weight:400;
+        font-style:normal;
+    }
+
+/* ---------------------------------------------------
+    Icons Mapping
+----------------------------------------------------- */
+
+    $act-bell: "\EA3D";
+    $act-check: "\E9C0";
+    $act-close: "\E9CA";
+    $act-download: "\E90A";
+    $act-edit: "\E9FF";
+    $act-eye: "\E908";
+    $act-eye-slash: "\E909";
+    $act-filter: "\E90F";
+    $act-info: "\EA05";
+    $act-loading: "\E907";
+    $act-minus: "\E9A8";
+    $act-play: "\E9E2";
+    $act-plus: "\E9C1";
+    $act-search: "\E9BF";
+    $act-settings: "\E900";
+    $act-share: "\EA26";
+    $act-trash: "\E904";
+    $ccm-airplane: "\EA0E";
+    $ccm-auto: "\E9AB";
+    $ccm-balance-transfer: "\EA07";
+    $ccm-bookmark-active: "\E90D";
+    $ccm-bookmark-add: "\E90C";
+    $ccm-bookmark-hover: "\E90E";
+    $ccm-business: "\EA0F";
+    $ccm-credit-card: "\EA20";
+    $ccm-credit-card-alt: "\E9A7";
+    $ccm-credit-card-slash: "\E9C4";
+    $ccm-credit-card-wallet: "\EA1F";
+    $ccm-dining: "\E911";
+    $ccm-dollar-sign: "\EA03";
+    $ccm-dollar-sign-box: "\E9F0";
+    $ccm-dollar-sign-cashback: "\EA12";
+    $ccm-gas: "\EA16";
+    $ccm-home: "\E9AA";
+    $ccm-loan: "\E9E9";
+    $ccm-marketplace: "\E913";
+    $ccm-money: "\EA0D";
+    $ccm-percent-box: "\E9F9";
+    $ccm-percent-burst: "\EA02";
+    $ccm-shopping-cart: "\E910";
+    $ccm-star: "\E90B";
+    $ccm-student: "\EA1C";
+    $ccm-thumb-down: "\EA0B";
+    $ccm-thumb-up: "\EA0A";
+    $ccm-ticket: "\E912";
+    $ccm-trophy: "\EA06";
+    $con-add-circle: "\EA32";
+    $con-alert: "\E9A5";
+    $con-calculator: "\E9E4";
+    $con-chat: "\E9C7";
+    $con-chat-convo: "\E9B1";
+    $con-compare: "\EA42";
+    $con-confirm: "\EA2E";
+    $con-data-furnisher: "\EA38";
+    $con-delivery: "\EA39";
+    $con-email: "\E9FE";
+    $con-find-item: "\EA37";
+    $con-in-progress: "\EA35";
+    $con-input-after: "\EA34";
+    $con-input-before: "\EA33";
+    $con-lightbulb: "\EA21";
+    $con-news: "\EA43";
+    $con-pdf: "\E901";
+    $con-phone: "\E9A3";
+    $con-print: "\EA3B";
+    $con-processing: "\EA31";
+    $con-quotes-left: "\EA19";
+    $con-quotes-right: "\EA1A";
+    $con-stop: "\EA2F";
+    $con-time: "\EA36";
+    $con-update: "\EA30";
+    $con-upload-failed: "\EA3A";
+    $frs-arrow-box-down: "\E99F";
+    $frs-arrow-box-up: "\E99E";
+    $frs-bank: "\E9A9";
+    $frs-bill-utility: "\E905";
+    $frs-calendar: "\E9C3";
+    $frs-calendar-30: "\E9B6";
+    $frs-change: "\E9AE";
+    $frs-chart-bar: "\E9D7";
+    $frs-chart-down: "\EA1B";
+    $frs-chart-grow: "\E99B";
+    $frs-chart-simulator: "\E99C";
+    $frs-dispute: "\E9BB";
+    $frs-flag: "\E9B0";
+    $frs-folder-minus: "\E9DA";
+    $frs-hard-inquiries: "\E9D9";
+    $frs-monitoring: "\E99A";
+    $frs-mortgage: "\E9A1";
+    $frs-out: "\EA41";
+    $frs-radar: "\E9C5";
+    $frs-range: "\EA01";
+    $frs-records-account: "\E9D8";
+    $frs-report: "\E995";
+    $frs-report-3b: "\E998";
+    $frs-report-alert: "\E9B7";
+    $frs-report-blocked: "\E902";
+    $frs-report-experian: "\E996";
+    $frs-report-experian-score: "\E9FB";
+    $frs-report-shield: "\E9B5";
+    $frs-rocket-boost: "\E903";
+    $frs-score: "\E999";
+    $frs-score-3b: "\E9C6";
+    $frs-score-alert: "\E9B8";
+    $frs-score-bad: "\EA1D";
+    $frs-score-fair: "\EA1E";
+    $frs-security-freeze: "\E9A2";
+    $frs-telco: "\E906";
+    $idt-address: "\E9C9";
+    $idt-address-alert: "\E9B2";
+    $idt-bankruptcy: "\E9EE";
+    $idt-briefcase: "\E9DC";
+    $idt-briefcase-insurance: "\E9A0";
+    $idt-court: "\E9EA";
+    $idt-dark-web: "\E9E6";
+    $idt-data: "\E9A4";
+    $idt-driver-license: "\EA29";
+    $idt-fingerprint: "\E9B9";
+    $idt-fingerprint-alert: "\E9A6";
+    $idt-folder-account: "\E9AF";
+    $idt-fraud: "\E9B3";
+    $idt-guide: "\E9E5";
+    $idt-handcuffs: "\EA3C";
+    $idt-lock: "\E9E3";
+    $idt-lock-open: "\EA17";
+    $idt-medical: "\EA27";
+    $idt-passport: "\EA28";
+    $idt-report-account: "\E9EF";
+    $idt-report-bank: "\E9EC";
+    $idt-retail: "\EA2B";
+    $idt-sex-offender: "\E9EB";
+    $idt-shield-check: "\EA04";
+    $idt-shield-lock: "\EA08";
+    $idt-social-media: "\EA2A";
+    $idt-social-security: "\E9E8";
+    $nav-angle-circle-down: "\EA13";
+    $nav-angle-circle-up: "\EA14";
+    $nav-angle-down: "\E9DE";
+    $nav-angle-left: "\E9BD";
+    $nav-angle-right: "\E9BC";
+    $nav-angle-up: "\E9DD";
+    $nav-arrow-left: "\EA2C";
+    $nav-arrow-right: "\E9BE";
+    $nav-caret-down: "\EA10";
+    $nav-caret-sort: "\EA18";
+    $nav-caret-up: "\EA11";
+    $nav-new-window: "\EA09";
+    $ppl-adult: "\EA22";
+    $ppl-adult-children: "\EA23";
+    $ppl-adult-man-woman: "\EA25";
+    $ppl-age-group: "\E9F1";
+    $ppl-agent: "\E9B4";
+    $ppl-child-scan: "\EA2D";
+    $ppl-family: "\EA24";
+    $ppl-lender: "\E997";
+    $ppl-people: "\E9F8";
+    $ppl-user: "\E9D2";
+    $ppl-user-affect: "\E9F4";
+    $ppl-user-consumers: "\E9DB";
+    $ppl-user-data: "\E9F6";
+    $soc-bookmark: "\E9D1";
+    $soc-facebook: "\E9CC";
+    $soc-instagram: "\E9CE";
+    $soc-linkedin: "\EA00";
+    $soc-mail: "\E9D0";
+    $soc-twitter: "\E9CD";
+    $soc-youtube: "\E9CF";
+
+    $exp-icons: () !default;
+
+    $exp-icons: map-merge(
+    (
+        "act-bell":                $act-bell,
+        "act-check":               $act-check,
+        "act-close":               $act-close,
+        "act-download":            $act-download,
+        "act-edit":                $act-edit,
+        "act-eye":                 $act-eye,
+        "act-eye-slash":           $act-eye-slash,
+        "act-filter":               $act-filter,
+        "act-info":                $act-info,
+        "act-loading":             $act-loading,
+        "act-minus":               $act-minus,
+        "act-play":                $act-play,
+        "act-plus":                $act-plus,
+        "act-search":              $act-search,
+        "act-settings":            $act-settings,
+        "act-share":               $act-share,
+        "act-trash":               $act-trash,
+        "ccm-airplane":            $ccm-airplane,
+        "ccm-auto":                $ccm-auto,
+        "ccm-balance-transfer":    $ccm-balance-transfer,
+        "ccm-bookmark-active":     $ccm-bookmark-active,
+        "ccm-bookmark-add":        $ccm-bookmark-add,
+        "ccm-bookmark-hover":      $ccm-bookmark-hover,
+        "ccm-business":            $ccm-business,
+        "ccm-credit-card":         $ccm-credit-card,
+        "ccm-credit-card-alt":     $ccm-credit-card-alt,
+        "ccm-credit-card-slash":   $ccm-credit-card-slash,
+        "ccm-credit-card-wallet":  $ccm-credit-card-wallet,
+        "ccm-dining":              $ccm-dining,
+        "ccm-dollar-sign":         $ccm-dollar-sign,
+        "ccm-dollar-sign-box":     $ccm-dollar-sign-box,
+        "ccm-dollar-sign-cashback":$ccm-dollar-sign-cashback,
+        "ccm-gas":                 $ccm-gas,
+        "ccm-home":                $ccm-home,
+        "ccm-loan":                $ccm-loan,
+        "ccm-marketplace":         $ccm-marketplace,
+        "ccm-money":               $ccm-money,
+        "ccm-percent-box":         $ccm-percent-box,
+        "ccm-percent-burst":       $ccm-percent-burst,
+        "ccm-shopping-cart":       $ccm-shopping-cart,
+        "ccm-star":                $ccm-star,
+        "ccm-student":             $ccm-student,
+        "ccm-thumb-down":          $ccm-thumb-down,
+        "ccm-thumb-up":            $ccm-thumb-up,
+        "ccm-ticket":              $ccm-ticket,
+        "ccm-trophy":              $ccm-trophy,
+        "con-add-circle":          $con-add-circle,
+        "con-alert":               $con-alert,
+        "con-calculator":          $con-calculator,
+        "con-chat":                $con-chat,
+        "con-chat-convo":          $con-chat-convo,
+        "con-compare":             $con-compare,
+        "con-confirm":              $con-confirm,
+        "con-data-furnisher":      $con-data-furnisher,
+        "con-delivery":            $con-delivery,
+        "con-email":               $con-email,
+        "con-find-item":            $con-find-item,
+        "con-in-progress":         $con-in-progress,
+        "con-input-after":         $con-input-after,
+        "con-input-before":        $con-input-before,
+        "con-lightbulb":           $con-lightbulb,
+        "con-news":                $con-news,
+        "con-pdf":                 $con-pdf,
+        "con-phone":               $con-phone,
+        "con-print":               $con-print,
+        "con-processing":          $con-processing,
+        "con-quotes-left":         $con-quotes-left,
+        "con-quotes-right":        $con-quotes-right,
+        "con-stop":                $con-stop,
+        "con-time":                $con-time,
+        "con-update":              $con-update,
+        "con-upload-failed":       $con-upload-failed,
+        "frs-arrow-box-down":      $frs-arrow-box-down,
+        "frs-arrow-box-up":        $frs-arrow-box-up,
+        "frs-bank":                $frs-bank,
+        "frs-bill-utility":        $frs-bill-utility,
+        "frs-calendar":            $frs-calendar,
+        "frs-calendar-30":         $frs-calendar-30,
+        "frs-change":              $frs-change,
+        "frs-chart-bar":           $frs-chart-bar,
+        "frs-chart-down":          $frs-chart-down,
+        "frs-chart-grow":          $frs-chart-grow,
+        "frs-chart-simulator":     $frs-chart-simulator,
+        "frs-dispute":             $frs-dispute,
+        "frs-flag":                 $frs-flag,
+        "frs-folder-minus":        $frs-folder-minus,
+        "frs-hard-inquiries":      $frs-hard-inquiries,
+        "frs-monitoring":          $frs-monitoring,
+        "frs-mortgage":            $frs-mortgage,
+        "frs-out":                 $frs-out,
+        "frs-radar":               $frs-radar,
+        "frs-range":               $frs-range,
+        "frs-records-account":     $frs-records-account,
+        "frs-report":              $frs-report,
+        "frs-report-3b":           $frs-report-3b,
+        "frs-report-alert":        $frs-report-alert,
+        "frs-report-blocked":      $frs-report-blocked,
+        "frs-report-experian":     $frs-report-experian,
+        "frs-report-experian-score":$frs-report-experian-score,
+        "frs-report-shield":       $frs-report-shield,
+        "frs-rocket-boost":        $frs-rocket-boost,
+        "frs-score":               $frs-score,
+        "frs-score-3b":            $frs-score-3b,
+        "frs-score-alert":         $frs-score-alert,
+        "frs-score-bad":           $frs-score-bad,
+        "frs-score-fair":          $frs-score-fair,
+        "frs-security-freeze":     $frs-security-freeze,
+        "frs-telco":               $frs-telco,
+        "idt-address":             $idt-address,
+        "idt-address-alert":       $idt-address-alert,
+        "idt-bankruptcy":          $idt-bankruptcy,
+        "idt-briefcase":           $idt-briefcase,
+        "idt-briefcase-insurance": $idt-briefcase-insurance,
+        "idt-court":               $idt-court,
+        "idt-dark-web":            $idt-dark-web,
+        "idt-data":                $idt-data,
+        "idt-driver-license":      $idt-driver-license,
+        "idt-fingerprint":          $idt-fingerprint,
+        "idt-fingerprint-alert":    $idt-fingerprint-alert,
+        "idt-folder-account":      $idt-folder-account,
+        "idt-fraud":               $idt-fraud,
+        "idt-guide":               $idt-guide,
+        "idt-handcuffs":           $idt-handcuffs,
+        "idt-lock":                $idt-lock,
+        "idt-lock-open":           $idt-lock-open,
+        "idt-medical":             $idt-medical,
+        "idt-passport":            $idt-passport,
+        "idt-report-account":      $idt-report-account,
+        "idt-report-bank":         $idt-report-bank,
+        "idt-retail":              $idt-retail,
+        "idt-sex-offender":        $idt-sex-offender,
+        "idt-shield-check":        $idt-shield-check,
+        "idt-shield-lock":         $idt-shield-lock,
+        "idt-social-media":        $idt-social-media,
+        "idt-social-security":     $idt-social-security,
+        "nav-angle-circle-down":   $nav-angle-circle-down,
+        "nav-angle-circle-up":     $nav-angle-circle-up,
+        "nav-angle-down":          $nav-angle-down,
+        "nav-angle-left":          $nav-angle-left,
+        "nav-angle-right":         $nav-angle-right,
+        "nav-angle-up":            $nav-angle-up,
+        "nav-arrow-left":          $nav-arrow-left,
+        "nav-arrow-right":         $nav-arrow-right,
+        "nav-caret-down":          $nav-caret-down,
+        "nav-caret-sort":          $nav-caret-sort,
+        "nav-caret-up":            $nav-caret-up,
+        "nav-new-window":          $nav-new-window,
+        "ppl-adult":               $ppl-adult,
+        "ppl-adult-children":      $ppl-adult-children,
+        "ppl-adult-man-woman":     $ppl-adult-man-woman,
+        "ppl-age-group":           $ppl-age-group,
+        "ppl-agent":               $ppl-agent,
+        "ppl-child-scan":          $ppl-child-scan,
+        "ppl-family":              $ppl-family,
+        "ppl-lender":              $ppl-lender,
+        "ppl-people":              $ppl-people,
+        "ppl-user":                $ppl-user,
+        "ppl-user-affect":         $ppl-user-affect,
+        "ppl-user-consumers":      $ppl-user-consumers,
+        "ppl-user-data":           $ppl-user-data,
+        "soc-bookmark":            $soc-bookmark,
+        "soc-facebook":            $soc-facebook,
+        "soc-instagram":           $soc-instagram,
+        "soc-linkedin":            $soc-linkedin,
+        "soc-mail":                $soc-mail,
+        "soc-twitter":             $soc-twitter,
+        "soc-youtube":             $soc-youtube
+    ),
+    $exp-icons);
+
 /* ---------------------------------------------------
     Mixins
 ----------------------------------------------------- */
+
     @mixin make-font($weight) {
         font-family: 'Roboto'; 
         font-style: normal; 
@@ -124,6 +484,12 @@
             border-color: $value;
             border-width: $exp-border-width;
             border-style: solid;
+        }
+    }
+
+    @mixin make-icons($name, $value) {
+        .exp-icon-#{$name}:before {
+            content: $value;
         }
     }
 
@@ -150,11 +516,76 @@
         .exp-font-r { @include make-font(400); }
         .exp-font-m { @include make-font(500); }
 
+    // Experian Icons
+        [class*="exp-icon-"], [class^=exp-icon-] {
+            font-family: experian-icons !important;
+            font-style: normal;
+            font-weight: 400;
+            font-variant: normal;
+            text-transform: none;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale
+        }
+
+        @each $key, $value in $exp-icons {
+            @include make-icons("#{$key}", $value);
+        }
+
+    // Texts
+        p {
+            @include make-font(300); 
+            font-size: 1rem;
+            color: $exp-dark-grey;
+            letter-spacing: 0;
+            line-height: 1.563rem;
+        }
+
+        a { 
+            &, &:visited, &:focus, &:hover {
+                color: $exp-light-blue; 
+                text-decoration: none; 
+                position: relative; 
+            }
+
+            &:before {
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: .09rem;
+                bottom: 0;
+                left: 0;
+                background-color: $exp-light-blue;
+                visibility: hidden;
+
+                -webkit-transform: scaleX(0);
+                transform: scaleX(0);
+                
+                -webkit-transition: all 0.3s ease-in-out 0s;
+                transition: all 0.3s ease-in-out 0s;
+            }
+            
+            &:hover:before {
+                visibility: visible;
+                -webkit-transform: scaleX(1);
+                transform: scaleX(1);
+            }
+        }
+
+        blockquote {
+            @include make-font(400);
+            font-size: 1rem;
+            border-left: $exp-border-width * 5 solid $exp-violet;
+
+            padding: .75rem 1.563rem;
+            margin: 0 0 1.563rem;
+        }
+        
     // Headings
         h1 { 
             @include make-font(100); 
-            font-size: 4.375em;
-            color: exp-colors("exp-dark-grey");
+            font-size: 4.375rem;
+            color: $exp-dark-grey;
             letter-spacing: 0;
             line-height: 4.688rem;
         }
@@ -169,7 +600,7 @@
 
         h3 {
             @include make-font(100); 
-            font-size:  2.063em;
+            font-size:  2.063rem;
             color: $exp-dark-grey;
             letter-spacing: 0.8px;
             line-height: 2.5rem;
@@ -191,13 +622,13 @@
             line-height: 1.438rem;
         }
 
-        // h6 {
-        //     @include make-font(100); 
-        //     font-size:  1.75rem;
-        //     color: exp-colors("exp-dark-grey");
-        //     letter-spacing: 0.3px;
-        //     line-height: 1.25rem;
-        // }
+        h6 {
+            @include make-font(500); 
+            font-size:  1rem;
+            color: $exp-dark-grey;
+            letter-spacing: 0.8px;
+            line-height: 1.313rem;
+        }
 
     // Borders
         .exp-rounded-top { @include border-top-radius($exp-border-radius); }
@@ -208,3 +639,111 @@
             @include border-top-radius($exp-border-radius); 
             @include border-bottom-radius($exp-border-radius);
         }
+
+    // Lists
+    ul.exp-static {
+        @include make-font(300); 
+        font-size: 1rem;
+        list-style: none;
+        padding-left: .9375rem;
+        margin-bottom: .75rem;
+        
+        li {
+            line-height: 1.5rem;
+            text-indent: -2rem;
+            margin-left: .9375rem;
+            margin-bottom: 1rem;
+           
+            &:before {
+                color: $exp-dark-grey;
+                content: "\2022";
+                position: relative;
+                margin-right: .625rem;
+                margin-left:  .9375rem;
+            }
+        }
+    }
+
+    ul.exp-links {
+        @include make-font(300); 
+        font-size: 1rem;
+        list-style: none;
+        padding-left: .9375rem;
+        margin-bottom: .75rem;
+        text-indent: -2rem;
+        
+        li {
+            line-height: 1.5rem;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+           
+            &:before {
+                color: $exp-pink;
+                content: $nav-angle-right;
+                position: relative;
+                margin-right: .625rem;
+                margin-left:  .9375rem;
+                font-family:"experian-icons";
+                font-weight:400;
+            }
+
+            ul {
+                @include make-font(300); 
+                font-size: 1rem;
+                list-style: none;
+                padding-left: .9375rem;
+                margin-bottom: .75rem;
+                
+                li {
+                    line-height: 1.5rem;
+                    text-indent: -2rem;
+                    margin-left: .9375rem;
+                    margin-bottom: 1rem;
+                   
+                    &:before {
+                        color: $exp-dark-grey;
+                        content: "\2022";
+                        @include make-font(300); 
+                        position: relative;
+                        margin-right: .625rem;
+                        margin-left:  .9375rem;
+                    }
+
+                }
+            }
+        }
+
+        //     &:before {
+        //         
+        //     }
+
+        //     ul {
+        //         @include make-font(300); 
+        //         margin-top: 1rem;
+        //         list-style: none;
+                
+        //         li {
+        //             margin-bottom: 0;
+                
+        //             &:before {
+        //                 color: $exp-dark-grey;
+        //                 font-family: "Font Awesome 5 Free";
+        //                 content: "\2022";
+        //                 position: relative;
+        //                 margin-right: .625rem;
+        //                 margin-left: .9375rem;
+        //             }
+        //         }
+        //     }
+        // }
+    }
+
+
+
+//     section.content-block.gradient-bg-sec{color:#fff;background:#af1685;background:linear-gradient(to right,#af1685 0,#1d4f91 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#af1685',endColorstr='#1d4f91',GradientType=1)}
+
+//     section.db-bg-sec,.gradient-db-bg{background:#1d4f91;background:linear-gradient(to right,#426da9 0,#1d4f91 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#426da9',endColorstr='#1d4f91',GradientType=1);color:#fff}
+// section.pu-bg-sec,.gradient-pu-bg{background:#af1685;background:linear-gradient(to right,#af1685 0,#6d2077 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#af1685',endColorstr='#6d2077',GradientType=1);color:#fff}
+// section.pu-db-bg-sec,.gradient-pu-db-bg{background:#6d2077;background:linear-gradient(to right,#6d2077 0,#1d4f91 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#6d2077',endColorstr='#1d4f91',GradientType=1);color:#fff}
+// section.pi-db-bg-sec,.gradient-pi-db-bg,.gradient-bg-sec{background:#af1685;background:linear-gradient(to right,#af1685 0,#1d4f91 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#af1685',endColorstr='#1d4f91',GradientType=1);color:#fff}
+// se

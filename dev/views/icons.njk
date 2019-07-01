@@ -1,0 +1,28 @@
+{% extends "../templates/layout.njk" %}
+{% set title="icons" %}
+
+{% set icons = [ 'exp-icon-act-bell','exp-icon-act-check','exp-icon-act-close','exp-icon-act-download','exp-icon-act-edit','exp-icon-act-eye','exp-icon-act-eye-slash','exp-icon-act-filter','exp-icon-act-info','exp-icon-act-loading','exp-icon-act-minus','exp-icon-act-play','exp-icon-act-plus','exp-icon-act-search','exp-icon-act-settings','exp-icon-act-share','exp-icon-act-trash','exp-icon-ccm-airplane','exp-icon-ccm-auto','exp-icon-ccm-balance-transfer','exp-icon-ccm-bookmark-active','exp-icon-ccm-bookmark-add','exp-icon-ccm-bookmark-hover','exp-icon-ccm-business','exp-icon-ccm-credit-card','exp-icon-ccm-credit-card-alt','exp-icon-ccm-credit-card-slash','exp-icon-ccm-credit-card-wallet','exp-icon-ccm-dining','exp-icon-ccm-dollar-sign','exp-icon-ccm-dollar-sign-box','exp-icon-ccm-gas','exp-icon-ccm-home','exp-icon-ccm-loan','exp-icon-ccm-marketplace','exp-icon-ccm-money','exp-icon-ccm-percent-box','exp-icon-ccm-percent-burst','exp-icon-ccm-shopping-cart','exp-icon-ccm-star','exp-icon-ccm-student','exp-icon-ccm-thumb-down','exp-icon-ccm-thumb-up','exp-icon-ccm-ticket','exp-icon-ccm-trophy','exp-icon-con-add-circle','exp-icon-con-alert','exp-icon-con-calculator','exp-icon-con-chat','exp-icon-con-chat-convo','exp-icon-con-compare','exp-icon-con-confirm','exp-icon-con-data-furnisher','exp-icon-con-delivery','exp-icon-con-email','exp-icon-con-find-item','exp-icon-con-in-progress','exp-icon-con-input-after','exp-icon-con-input-before','exp-icon-con-lightbulb','exp-icon-con-news','exp-icon-con-pdf','exp-icon-con-phone','exp-icon-con-print','exp-icon-con-processing','exp-icon-con-quotes-left','exp-icon-con-quotes-right','exp-icon-con-stop','exp-icon-con-time','exp-icon-con-update','exp-icon-con-upload-failed','exp-icon-frs-arrow-box-down','exp-icon-frs-arrow-box-up','exp-icon-frs-bank','exp-icon-frs-bill-utility','exp-icon-frs-calendar','exp-icon-frs-calendar-30','exp-icon-frs-change','exp-icon-frs-chart-bar','exp-icon-frs-chart-down','exp-icon-frs-chart-grow','exp-icon-frs-chart-simulator','exp-icon-frs-dispute','exp-icon-frs-flag','exp-icon-frs-folder-minus','exp-icon-frs-hard-inquiries','exp-icon-frs-monitoring','exp-icon-frs-mortgage','exp-icon-frs-out','exp-icon-frs-radar','exp-icon-frs-range','exp-icon-frs-records-account','exp-icon-frs-report','exp-icon-frs-report-3b','exp-icon-frs-report-alert','exp-icon-frs-report-blocked','exp-icon-frs-report-experian','exp-icon-frs-report-shield','exp-icon-frs-rocket-boost','exp-icon-frs-score','exp-icon-frs-score-3b','exp-icon-frs-score-alert','exp-icon-frs-score-bad','exp-icon-frs-score-fair','exp-icon-frs-security-freeze','exp-icon-frs-telco','exp-icon-idt-address','exp-icon-idt-address-alert','exp-icon-idt-bankruptcy','exp-icon-idt-briefcase','exp-icon-idt-briefcase-insurance','exp-icon-idt-court','exp-icon-idt-dark-web','exp-icon-idt-data','exp-icon-idt-driver-license','exp-icon-idt-fingerprint','exp-icon-idt-fingerprint-alert','exp-icon-idt-folder-account','exp-icon-idt-fraud','exp-icon-idt-guide','exp-icon-idt-handcuffs','exp-icon-idt-lock','exp-icon-idt-lock-open','exp-icon-idt-medical','exp-icon-idt-passport','exp-icon-idt-report-account','exp-icon-idt-report-bank','exp-icon-idt-retail','exp-icon-idt-sex-offender','exp-icon-idt-shield-check','exp-icon-idt-shield-lock','exp-icon-idt-social-media','exp-icon-idt-social-security','exp-icon-nav-angle-circle-down','exp-icon-nav-angle-circle-up','exp-icon-nav-angle-down','exp-icon-nav-angle-left','exp-icon-nav-angle-right','exp-icon-nav-angle-up','exp-icon-nav-arrow-left','exp-icon-nav-arrow-right','exp-icon-nav-caret-down','exp-icon-nav-caret-sort','exp-icon-nav-caret-up','exp-icon-nav-new-window','exp-icon-ppl-adult','exp-icon-ppl-adult-children','exp-icon-ppl-adult-man-woman','exp-icon-ppl-age-group','exp-icon-ppl-agent','exp-icon-ppl-child-scan','exp-icon-ppl-family','exp-icon-ppl-lender','exp-icon-ppl-people','exp-icon-ppl-user','exp-icon-ppl-user-affect','exp-icon-ppl-user-consumers','exp-icon-ppl-user-data','exp-icon-soc-bookmark','exp-icon-soc-facebook','exp-icon-soc-instagram','exp-icon-soc-linkedin','exp-icon-soc-mail','exp-icon-soc-twitter','exp-icon-soc-youtube'] %}
+
+
+{% block content %}
+    <div class="row">
+        {% for icon in icons %}
+            <div class="col-2 mt-4">
+                <div class="p-4 exp-rounded bg-exp-dark-blue text-white text-center">
+                    <div class="{{ icon }} display-4"></div>
+                    <small>.{{ icon }}</small>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="row">
+        {% for icon in icons %}
+            <div class="col-2 mt-4">
+                <div class="p-4 exp-rounded bg-outline-exp-pink text-exp-pink text-center">
+                    <div class="{{ icon }} display-4"></div>
+                    <small>.{{ icon }}</small>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
