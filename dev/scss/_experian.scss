@@ -478,12 +478,29 @@
         font-weight: $weight;
     }
 
+    @mixin make-backgrounds($parent, $color) {
+        #{$parent} {
+            background-color: $color !important;
+            color: color-yiq($color);
+        }
+        a#{$parent},
+        button#{$parent} {
+            @include hover-focus {
+                background-color: darken($color, 10%) !important;
+            }
+        }
+    }
+
+    @mixin make-outline($color) {
+        border-color: $color;
+        border-width: $exp-border-width;
+        border-style: solid;
+    }
+
     @mixin bg-outline-variant($color, $value) {
         .bg-outline-#{$color} {
             color: $value;
-            border-color: $value;
-            border-width: $exp-border-width;
-            border-style: solid;
+            @include make-outline($value);
         }
     }
 
@@ -493,17 +510,62 @@
         }
     }
 
+    @mixin make-gradients($start, $end, $name) {
+        .exp-gradient-x-#{ $name } {
+            @include gradient-x($start, $end, 0%, 100%);
+        }
+        .exp-gradient-y-#{ $name } {
+            @include gradient-y($start, $end, 0%, 100%);
+        }
+        .exp-gradient-45-#{ $name } {
+            @include gradient-directional($start, $end, 45deg);
+        }
+        .exp-gradient-135-#{ $name } {
+            @include gradient-directional($start, $end, 135deg);
+        }
+    }
+
 /* ---------------------------------------------------
     UI Build
 ----------------------------------------------------- */
     // Colored Backgrounds
         @each $color, $value in $exp-colors {
-            @include bg-variant(".bg-#{$color}", $value);
+            @include make-backgrounds(".bg-#{$color}", $value);
         }
         
         @each $color, $value in $exp-colors {
             @include bg-outline-variant($color, $value);
         }
+
+    // Graphic backgrounds
+        .bg-line-art {
+            background: url('https://www.experian.com/global-images/hero/line-art-marquee-2000x250.png') no-repeat;
+        }
+        .bg-squircles-art {
+                background: url(https://assets.experiancs.com/images/graphic-gray-right-squircles.svg) 100% 0 no-repeat,url(https://assets.experiancs.com/images/graphic-gray-left-squircles.svg) 0 0 no-repeat;
+                width: 100%;
+                height: 100%;   
+        }
+
+    // Gradients
+        .exp-divider {
+            width: 100%;
+            height: .1875rem;
+            @include gradient-x($exp-pink, $exp-dark-blue, 0%, 100%);
+        }
+
+        @include make-gradients($exp-dark-blue, $exp-light-blue, 'dark-light-blue');
+        @include make-gradients($exp-violet, $exp-purple, 'violet-purple');
+        @include make-gradients($exp-violet, $exp-pink, 'violet-pink');
+        @include make-gradients($exp-purple, $exp-pink, 'purple-pink');
+        @include make-gradients($exp-violet, $exp-dark-blue, 'violet-blue');
+        @include make-gradients($exp-purple, $exp-dark-blue, 'purple-blue');
+        @include make-gradients($exp-light-blue, $exp-dark-blue, 'light-dark-blue');
+        @include make-gradients($exp-purple, $exp-violet,'purple-violet');
+        @include make-gradients($exp-pink, $exp-violet, 'pink-violet');
+        @include make-gradients($exp-pink, $exp-purple,'pink-purple');
+        @include make-gradients($exp-dark-blue, $exp-violet, 'blue-violet');
+        @include make-gradients($exp-dark-blue, $exp-purple, 'blue-purple');
 
     // Text colors
         @each $color, $value in $exp-colors {
@@ -641,109 +703,149 @@
         }
 
     // Lists
-    ul.exp-static {
-        @include make-font(300); 
-        font-size: 1rem;
-        list-style: none;
-        padding-left: .9375rem;
-        margin-bottom: .75rem;
-        
-        li {
-            line-height: 1.5rem;
-            text-indent: -2rem;
-            margin-left: .9375rem;
-            margin-bottom: 1rem;
-           
-            &:before {
-                color: $exp-dark-grey;
-                content: "\2022";
-                position: relative;
-                margin-right: .625rem;
-                margin-left:  .9375rem;
-            }
-        }
-    }
-
-    ul.exp-links {
-        @include make-font(300); 
-        font-size: 1rem;
-        list-style: none;
-        padding-left: .9375rem;
-        margin-bottom: .75rem;
-        text-indent: -2rem;
-        
-        li {
-            line-height: 1.5rem;
-            margin-top: 1rem;
-            margin-bottom: 1rem;
-           
-            &:before {
-                color: $exp-pink;
-                content: $nav-angle-right;
-                position: relative;
-                margin-right: .625rem;
-                margin-left:  .9375rem;
-                font-family:"experian-icons";
-                font-weight:400;
-            }
-
-            ul {
-                @include make-font(300); 
-                font-size: 1rem;
-                list-style: none;
-                padding-left: .9375rem;
-                margin-bottom: .75rem;
-                
-                li {
-                    line-height: 1.5rem;
-                    text-indent: -2rem;
-                    margin-left: .9375rem;
-                    margin-bottom: 1rem;
-                   
-                    &:before {
-                        color: $exp-dark-grey;
-                        content: "\2022";
-                        @include make-font(300); 
-                        position: relative;
-                        margin-right: .625rem;
-                        margin-left:  .9375rem;
-                    }
-
+        ul.exp-static {
+            @include make-font(300); 
+            font-size: 1rem;
+            list-style: none;
+            padding-left: .9375rem;
+            margin-bottom: .75rem;
+            
+            li {
+                line-height: 1.5rem;
+                text-indent: -2rem;
+                margin-left: .9375rem;
+                margin-bottom: 1rem;
+            
+                &:before {
+                    color: $exp-dark-grey;
+                    content: "\2022";
+                    position: relative;
+                    margin-right: .625rem;
+                    margin-left:  .9375rem;
                 }
             }
         }
 
-        //     &:before {
-        //         
-        //     }
+        ul.exp-links {
+            @include make-font(300); 
+            font-size: 1rem;
+            list-style: none;
+            padding-left: .9375rem;
+            margin-bottom: .75rem;
+            text-indent: -2rem;
+            
+            li {
+                line-height: 1.5rem;
+                margin-top: 1rem;
+                margin-bottom: 1rem;
+            
+                &:before {
+                    color: $exp-pink;
+                    content: $nav-angle-right;
+                    position: relative;
+                    margin-right: .625rem;
+                    margin-left:  .9375rem;
+                    font-family:"experian-icons";
+                    font-weight:400;
+                }
 
-        //     ul {
-        //         @include make-font(300); 
-        //         margin-top: 1rem;
-        //         list-style: none;
-                
-        //         li {
-        //             margin-bottom: 0;
-                
-        //             &:before {
-        //                 color: $exp-dark-grey;
-        //                 font-family: "Font Awesome 5 Free";
-        //                 content: "\2022";
-        //                 position: relative;
-        //                 margin-right: .625rem;
-        //                 margin-left: .9375rem;
-        //             }
-        //         }
-        //     }
-        // }
-    }
+                ul {
+                    @include make-font(300); 
+                    font-size: 1rem;
+                    list-style: none;
+                    padding-left: .9375rem;
+                    margin-bottom: .75rem;
+                    
+                    li {
+                        line-height: 1.5rem;
+                        text-indent: -2rem;
+                        margin-left: .9375rem;
+                        margin-bottom: 1rem;
+                    
+                        &:before {
+                            color: $exp-dark-grey;
+                            content: "\2022";
+                            @include make-font(300); 
+                            position: relative;
+                            margin-right: .625rem;
+                            margin-left:  .9375rem;
+                        }
 
+                    }
+                }
+            }
+        }
 
+    // Buttons
+        .btn.exp-hero {
+            @include border-top-radius($exp-border-radius); 
+            @include border-bottom-radius($exp-border-radius);
+            @include make-font(300); 
+            background-color: $exp-purple;
+            color: $exp-white;
+            padding: .9375rem 2.75rem;
+            font-size: 1rem;
+            &::after {
+                content: "\E9BC";
+                font-family: experian-icons;
+                padding-left: 1rem
+            }
+        }
+        
+        .btn.exp-outline-hero {
+            @include border-top-radius($exp-border-radius); 
+            @include border-bottom-radius($exp-border-radius);
+            @include make-font(300); 
+            @include make-outline($exp-purple); 
+            background-color: nonw;
+            color: $exp-purple;
+            padding: .9375rem 2.75rem;
+            font-size: 1rem;
+            &::after {
+                content: "\E9BC";
+                font-family: experian-icons;
+                padding-left: 1rem
+            }
+        }
 
-//     section.content-block.gradient-bg-sec{color:#fff;background:#af1685;background:linear-gradient(to right,#af1685 0,#1d4f91 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#af1685',endColorstr='#1d4f91',GradientType=1)}
+        .btn.exp-default, [type="submit"] {
+            @include border-top-radius($exp-border-radius); 
+            @include border-bottom-radius($exp-border-radius);
+            @include make-font(300); 
+            background-color: $exp-dark-blue;
+            color: $exp-white;
+            padding: .9375rem 1.75rem;
+            font-size: 1rem;
+        }
 
-//     section.db-bg-sec,.gradient-db-bg{background:#1d4f91;background:linear-gradient(to right,#426da9 0,#1d4f91 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#426da9',endColorstr='#1d4f91',GradientType=1);color:#fff}
-// section.pu-bg-sec,.gradient-pu-bg{background:#af1685;background:linear-gradient(to right,#af1685 0,#6d2077 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#af1685',endColorstr='#6d2077',GradientType=1);color:#fff}
-// section.pu-db-bg-sec,.gradient-pu-db-bg{background:#6d2077;background:linear-gradient(to right,#6d2077 0,#1d4f91 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#6d2077',endColorstr='#1d4f91',GradientType=1);color:#fff}
-// section.pi-db-bg-sec,.gradient-pi-db-bg,.gradient-bg-sec{background:#af1685;background:linear-gradient(to right,#af1685 0,#1d4f91 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#af1685',endColorstr='#1d4f91',GradientType=1);color:#fff}
-// se
+        .btn.exp-outline-default, [type="reset"] {
+            @include border-top-radius($exp-border-radius); 
+            @include border-bottom-radius($exp-border-radius);
+            @include make-font(300); 
+            @include make-outline($exp-dark-blue); 
+            background-color: none;
+            color: $exp-dark-blue;
+            padding: .9375rem 1.75rem;
+            font-size: 1rem;
+        }
+
+        .btn.exp-white {
+            @include border-top-radius($exp-border-radius); 
+            @include border-bottom-radius($exp-border-radius);
+            @include make-font(500); 
+            background-color: $exp-white;
+            color: $exp-dark-grey;
+            padding: .9375rem 1.75rem;
+            font-size: 1rem;
+        }
+        
+        .btn.exp-outline-white {
+            @include border-top-radius($exp-border-radius); 
+            @include border-bottom-radius($exp-border-radius);
+            @include make-font(500); 
+            @include make-outline($exp-white); 
+            background-color: none;
+            color: $exp-white;
+            padding: .9375rem 1.75rem;
+            font-size: 1rem;
+        }

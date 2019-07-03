@@ -1,13 +1,75 @@
 {% extends "../templates/layout.njk" %}
 {% set title="gradients" %}
 
-{% set primaryColors = ['exp-dark-blue', 'exp-light-blue', 'exp-violet', 'exp-purple', 'exp-pink'] %}
-{% set secondaryColors = ['exp-red', 'exp-orange', 'exp-yellow', 'exp-green', 'exp-sapphire', 'exp-dark-grey', 'exp-medium-grey', 'exp-light-grey', 'exp-white', 'exp-black'] %}
+{% set gradients = ['dark-light-blue', 'violet-purple', 'violet-pink','purple-pink','violet-blue','purple-blue','light-dark-blue','purple-violet','pink-violet','pink-purple','blue-violet','blue-purple'] %}
 
 {% block content %}
     <div class="row">
-        <div class="col-2 mt-4">
-            
+        <div class="col-12">
+            <p class="text-exp-pink font-l">This is a gradient divider. It's fixed height and gradient colors. Not to be used in any other way! No color switching, nor gradient direction changes. Height is always fixed to 3px.</p>
+            <div class="exp-divider"></div>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-12 mt-4">
+            <h1 class="text-exp-purple">NB: Not all colors could be mixed.</h1>
+            <h4>Horizontal Gardient variants</h4>
+            <p>Gradients are split between two colors at 50%. Only primary colors should be used. No more than two colors can be applied.</p>
+        </div>
+    </div>
+    <div class="row">
+        {% for grad in gradients %}
+            <div class="col-4 mt-2">
+                <div class="exp-rounded p-4 exp-gradient-x-{{ grad }} text-white">
+                    <small>.exp-gradient-x-{{ grad }}</small>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="row">
+        <div class="col-12 mt-4">
+            <h4>Vertical Gardient variants</h4>
+        </div>
+    </div>
+    <div class="row">
+        {% for grad in gradients %}
+            <div class="col-4 mt-2">
+                <div class="exp-rounded p-4 exp-gradient-y-{{ grad }} text-white">
+                    <small>.exp-gradient-y-{{ grad }}</small>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="row">
+        <div class="col-12 mt-4">
+            <h1 class="text-exp-purple">NB: Not all angles are applicabe.</h1>
+            <h4>45deg Directional Gardient variants</h4>
+        </div>
+    </div>
+    <div class="row">
+        {% for grad in gradients %}
+            <div class="col-4 mt-2">
+                <div class="exp-rounded p-4 exp-gradient-45-{{ grad }} text-white">
+                    <small>.exp-gradient-45-{{ grad }}</small>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="row">
+        <div class="col-12 mt-4">
+            <h1 class="text-exp-purple">NB: Not all angles are applicabe.</h1>
+            <h4>135deg Directional Gardient variants</h4>
+        </div>
+    </div>
+    <div class="row">
+        {% for grad in gradients %}
+            <div class="col-4 mt-2">
+                <div class="exp-rounded p-4 exp-gradient-45-{{ grad }} text-white">
+                    <small>.exp-gradient-135-{{ grad }}</small>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
 {% endblock %}
