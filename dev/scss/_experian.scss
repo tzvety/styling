@@ -491,7 +491,7 @@
         }
     }
 
-    @mixin make-outline($color) {
+    @mixin make-border($color) {
         border-color: $color;
         border-width: $exp-border-width;
         border-style: solid;
@@ -500,7 +500,7 @@
     @mixin bg-outline-variant($color, $value) {
         .bg-outline-#{$color} {
             color: $value;
-            @include make-outline($value);
+            @include make-border($value);
         }
     }
 
@@ -523,6 +523,16 @@
         .exp-gradient-135-#{ $name } {
             @include gradient-directional($start, $end, 135deg);
         }
+    }
+
+    @mixin make-label-inactive() {
+        font-size: 1rem;
+        transform: translateY(0);
+    }
+      
+    @mixin make-label-active() {
+        font-size: .75rem;
+        transform: translateY(-.625rem);
     }
 
 /* ---------------------------------------------------
@@ -658,6 +668,11 @@
             color: $exp-dark-grey;
             letter-spacing: 0;
             line-height: 4.25rem;
+
+            &.form-header {
+                font-size: 3.438rem;
+                margin-bottom: 1.875rem;
+            }
         }
 
         h3 {
@@ -682,6 +697,11 @@
             color: $exp-light-blue;
             letter-spacing: 0.4px;
             line-height: 1.438rem;
+            
+            &.form-header {
+                color: $exp-dark-grey; 
+                margin-bottom: 1.875rem;
+            }
         }
 
         h6 {
@@ -796,8 +816,8 @@
             @include border-top-radius($exp-border-radius); 
             @include border-bottom-radius($exp-border-radius);
             @include make-font(300); 
-            @include make-outline($exp-purple); 
-            background-color: nonw;
+            @include make-border($exp-purple); 
+            background-color: none;
             color: $exp-purple;
             padding: .9375rem 2.75rem;
             font-size: 1rem;
@@ -822,7 +842,7 @@
             @include border-top-radius($exp-border-radius); 
             @include border-bottom-radius($exp-border-radius);
             @include make-font(300); 
-            @include make-outline($exp-dark-blue); 
+            @include make-border($exp-dark-blue); 
             background-color: none;
             color: $exp-dark-blue;
             padding: .9375rem 1.75rem;
@@ -843,9 +863,157 @@
             @include border-top-radius($exp-border-radius); 
             @include border-bottom-radius($exp-border-radius);
             @include make-font(500); 
-            @include make-outline($exp-white); 
+            @include make-border($exp-white); 
             background-color: none;
             color: $exp-white;
             padding: .9375rem 1.75rem;
             font-size: 1rem;
         }
+
+    // Form Elements
+        .exp-form-group {
+            @include make-border($exp-medium-grey);
+            @include border-top-radius($exp-border-radius); 
+            @include border-bottom-radius($exp-border-radius);
+            overflow: hidden;
+            position: relative;
+            cursor: text;
+
+            .form-control {
+                @include make-font(400); 
+                color: $exp-dark-grey;
+                background: transparent;
+                font-size: .875rem;
+                outline: 0;
+                padding: 0 .75rem;
+                appearance: none;
+                border: 0;
+                margin-top: 1rem;
+                cursor: text;
+
+                // Blame IE 10-11
+                &:-ms-input-placeholder {
+                    ~ label {
+                        @include make-label-inactive();
+                    }
+                }
+
+                // All other browsers except Edge
+                &:placeholder-shown {
+                    ~ label {
+                        @include make-label-inactive();
+                    }
+                }
+
+                &:focus {
+                    outline: none;
+                    box-shadow: none;
+                    ~ label {
+                        color: $exp-light-blue;
+                        @include make-label-active();
+                    }
+                }
+
+            }
+            
+            label {
+                @include make-font(400);
+                @include make-label-active();
+                left: 0;
+                margin: 0;
+                padding: 1.25rem .75rem;
+                position: absolute;
+                top: 0;
+                transition: all 0.4s;
+                line-height: .5rem;
+                color: $exp-medium-grey;
+                cursor: text;
+                z-index: -1;
+            }
+            
+            &.is-invalid {
+                padding-right: 1rem;
+                @include make-border($exp-red);
+                &::after {
+                    content: '! ';
+                    right: .75rem;
+                    top: 1rem;
+                    color:$exp-red;
+                    position: absolute;
+                  }
+                label {
+                    color: $exp-red;
+                }
+            }
+
+            &.is-valid {
+                padding-right: 1rem;
+                @include make-border(theme-color('success'));
+                &::after {
+                    font-family: experian-icons; 
+                    content: $act-check;                
+                    position: absolute;
+                    top: 1rem;
+                    right:.5rem;
+                    color: theme-color('success');
+                  }
+                label {
+                    color: theme-color('success');
+                }
+            }
+
+            input[type=number]::-webkit-inner-spin-button, 
+            input[type=number]::-webkit-outer-spin-button { 
+                -webkit-appearance: none; 
+                margin: 0; 
+            }
+
+            input[type="password"] {
+                font-family: caption;       
+                font-size: 1.5rem;
+                margin: 0;
+                padding-top: 22px;
+                letter-spacing: 4px;
+                line-height: .2
+            }
+        
+            input[type="search"]::-webkit-search-decoration,
+            input[type="search"]::-webkit-search-cancel-button,
+            input[type="search"]::-webkit-search-results-button,
+            input[type="search"]::-webkit-search-results-decoration {
+                -webkit-appearance:none;
+            }
+
+            &.search {
+                padding-right: 1rem;
+                &:before {
+                    font-family: experian-icons; 
+                    content: $act-search;                
+                    position: absolute;
+                    top: 1rem;
+                    right:.5rem;
+                    color: $exp-light-blue
+                }
+            }
+
+            &.clear {
+                padding-right: 1rem;
+                &:before {
+                    font-family: experian-icons; 
+                    content: $act-close;                
+                    position: absolute;
+                    top: 1rem;
+                    right:.5rem;
+                    color: $exp-light-blue
+                }
+            }
+                
+        }
+
+    
+    
+    
+
+
+
+
