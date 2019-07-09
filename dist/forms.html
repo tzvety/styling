@@ -39,10 +39,10 @@
                 <div class="col-lg-10">
                     
     <h2 class="form-header">Form Section Header is h2.form-header</h2>
-    <h5 class="form-header">Form Header is h5.form-header</h5>
+    <h5 class="form-header">Form Sub Header is h5.form-header</h5>
     <div class="bg-line-art p-4">
         <p class="text-exp-red">Both headers have optional usage. Don't use <b>.form-header</b> with other heading sizes!!!</p>
-        <p>Proper usage of form elements styling requires to follow markup: <b class="text-exp-purple">.form-row > <u>.exp-form-group</u> > input.form-control + label</b>.</p>
+        <p>Proper usage of form elements styling requires to follow markup: <b class="text-exp-purple">.form-row > <u>.form-group.exp-form-group</u> > input.form-control + label</b>.</p>
         <p><b class="text-exp-red">Placeholders should have space as a value.</b> Inputs should have IDs matching the labels.</p>
         <p>* Input type number are forced to render without spin buttons.</p>
     </div>
@@ -50,35 +50,34 @@
 
         <div class="form-row mt-4">
             <div class="col-md-4">
-                <div class="exp-form-group">    
+                <div class="form-group exp-form-group">    
                     <input id="textInputNoValue" type="text" class="form-control" placeholder=" " />
                     <label for="textInputNoValue">Text input</label>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="exp-form-group">    
+                <div class="form-group exp-form-group">    
                     <input id="numberInputNoValue" type="number" class="form-control" placeholder=" " />
                     <label for="numberInputNoValue">Number input *</label>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="exp-form-group">    
+                <div class="form-group exp-form-group">    
                     <input id="textInputWithValue" type="text" class="form-control" placeholder=" " value="Sample value" />
                     <label for="textInputWithValue">Prefilled text input</label>
                 </div>
             </div>
         </div>
 
-        
         <div class="form-row mt-4">
             <div class="col-md-4">
-                <div class="exp-form-group">    
+                <div class="form-group exp-form-group">    
                     <input id="emailInputNoValue" type="email" class="form-control" placeholder=" " />
                     <label for="emailInputNoValue">Email input</label>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="exp-form-group">    
+                <div class="form-group exp-form-group">    
                     <input id="passwordInputNoValue" type="password" class="form-control" placeholder=" " autocomplete="off" />
                     <label for="passwordInputNoValue">Password input</label>
                 </div>
@@ -91,12 +90,21 @@
             </div>
         </div>
 
-        <div class="form-row mt-4">
+        <div class="form-row">
             <div class="col-12">
                 <hr/>
             </div>
         </div>
-        
+
+        <div class="form-row mt-4">
+            <div class="col-12">
+                <div class="bg-line-art p-4">
+                    <p>The wrapper element that has <b class="text-exp-purple">.exp-form-group</b> should have additional class applied - <b class="text-exp-purple">.search</b> to match the visualisation.</p>
+                    <p>Clear input with icon should have class <b class="text-exp-purple">.clear</b> instead.</p>
+                </div>
+            </div>
+        </div>
+
         <div class="form-row mt-4">
             <div class="col-md-4">
                 <div class="exp-form-group search">    
@@ -120,6 +128,177 @@
             </div>
             
         </div>
+
+        <div class="form-row mt-4">
+            <div class="col-12">
+                <hr/>
+            </div>
+        </div>
+
+        <div class="form-row mt-4">
+            <div class="col-12">
+                <div class="bg-line-art p-4">
+                    <p>Textareas should have <b class="text-exp-purple">rows=9</b> to match style requirements for displaying them high as 3 inputs.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-6 mt-4">
+                <div class="form-group exp-form-group">    
+                    <textarea id="textareaExample" class="form-control" rows="9" placeholder=" "></textarea>
+                    <label for="textareaExample">Textarea Exampe</label>
+                </div>
+            </div>
+            <div class="col-6 mt-4">
+                <div class="form-group exp-form-group">    
+                    <textarea id="textareaWithContent" class="form-control" rows="9" placeholder=" ">Grumpy wizards make toxic brew for the evil Queen and Jack. One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. One morning, when Gregor. Grumpy wizards make toxic brew for the evil Queen and Jack. One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. One morning, when Gregor.
+                    </textarea>
+                    <label for="textareaWithContent">Textarea Exampe</label>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="form-row">
+            <div class="col-12">
+                <hr/>
+            </div>
+        </div>
+
+        <div class="form-row mt-4">
+            <div class="col-12">
+                <div class="bg-line-art p-4">
+                    <p>When inputs are used with addons the default classshould be extended as follows<b class="text-exp-purple">.form-row > <u>.input-group.exp-input-group</u> > input.form-control + input-group-append</b>...</p>
+                    <p><b class="text-exp-red">Placeholders should have space as a value.</b></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row mt-4">
+            <div class="col-4">
+                <div class="input-group exp-input-group">
+                    <input type="password" class="form-control" placeholder="Hidden password" aria-label="Hidden password" aria-describedby="button-addon-hide" value="123">
+                    <div class="input-group-append">
+                        <button class="btn bg-outline-exp-medium-grey text-exp-black" type="button" id="button-addon-hide"><i class="exp-icon-act-eye"></i></a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="input-group exp-input-group">
+                    <input type="text" class="form-control" placeholder="Visible password" aria-label="Visible password" aria-describedby="button-addon-show"  value="123">
+                    <div class="input-group-append">
+                        <button class="btn bg-exp-dark-blue" type="button" id="button-addon-show"><i class="exp-icon-act-eye"></i></a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="input-group exp-input-group is-invalid">
+                    <input type="text" class="form-control" placeholder="Input with error" aria-label="Input with error" aria-describedby="button-addon">
+                    <div class="input-group-append">
+                        <button class="btn bg-outline-exp-medium-grey text-exp-black" type="button" id="button-addon"><i class="exp-icon-act-eye"></i></a></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row mt-4">
+            <div class="col-12">
+                <hr/>
+            </div>
+        </div>
+
+        <div class="form-row mt-4">
+            <div class="col-12">
+                <div class="bg-line-art p-4">
+                    <p>Standard Bootstrap markup is exteneded as follows<b class="text-exp-purple"> .form-row > label.form-check.form-check-inline<u>.exp-form-radio</u> > input + <u>span.exp-radio</u></b>.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row mt-4">
+            <div class="col-12">
+                <label class="form-check form-check-inline exp-form-radio">
+                    Home
+                    <input type="radio" name="mobile">
+                    <span class="exp-radio"></span>
+                </label>
+        
+                <label class="form-check form-check-inline exp-form-radio">
+                    Cell
+                    <input type="radio" name="mobile">
+                    <span class="exp-radio"></span>
+                </label>
+
+                <label class="form-check form-check-inline exp-form-radio is-invalid">
+                    Home is invalid
+                    <input type="radio" name="mobile">
+                    <span class="exp-radio"></span>
+                </label>
+
+                <label class="form-check form-check-inline exp-form-radio is-valid">
+                    Cell is valid
+                    <input type="radio" name="mobile">
+                    <span class="exp-radio"></span>
+                </label>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-12">
+                <hr/>
+            </div>
+        </div>
+
+        <div class="form-row mt-4">
+            <div class="col-12">
+                <div class="bg-line-art p-4">
+                    <p>Standard Bootstrap markup is exteneded as follows<b class="text-exp-purple"> .form-row > label.form-check.form-check-inline<u>.exp-form-checkbox</u> > input + <u>span.exp-checkbox</u></b>.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row mt-4">
+            <div class="col-12">
+                <label class="form-check form-check-inline exp-form-checkbox">
+                    Would you like to receive the latest insights from Experian?
+                    <input type="checkbox" name="agreement">
+                    <span class="exp-checkbox"></span>
+                </label>
+        
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="col-12">
+                <label class="form-check form-check-inline exp-form-checkbox is-valid">
+                    Would you like to receive the latest insights from Experian?
+                    <input type="checkbox" name="agreement">
+                    <span class="exp-checkbox"></span>
+                </label>
+        
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-12">
+                <label class="form-check form-check-inline exp-form-checkbox is-invalid">
+                    Would you like to receive the latest insights from Experian?
+                    <input type="checkbox" name="agreement">
+                    <span class="exp-checkbox"></span>
+                </label>
+        
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="col-12">
+                <hr/>
+            </div>
+        </div>
+
+        
+
 
     </form>
         

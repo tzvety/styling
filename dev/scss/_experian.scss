@@ -528,6 +528,7 @@
     @mixin make-label-inactive() {
         font-size: 1rem;
         transform: translateY(0);
+        top: .2rem;
     }
       
     @mixin make-label-active() {
@@ -551,6 +552,7 @@
         .bg-line-art {
             background: url('https://www.experian.com/global-images/hero/line-art-marquee-2000x250.png') no-repeat;
         }
+
         .bg-squircles-art {
                 background: url(https://assets.experiancs.com/images/graphic-gray-right-squircles.svg) 100% 0 no-repeat,url(https://assets.experiancs.com/images/graphic-gray-left-squircles.svg) 0 0 no-repeat;
                 width: 100%;
@@ -597,7 +599,12 @@
             text-transform: none;
             line-height: 1;
             -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale
+            -moz-osx-font-smoothing: grayscale;
+
+            &.x2 { font-size: 2rem; }
+            &.x3 { font-size: 3rem; }
+            &.x4 { font-size: 4rem; }
+            &.x5 { font-size: 5rem; }
         }
 
         @each $key, $value in $exp-icons {
@@ -871,6 +878,30 @@
         }
 
     // Form Elements
+        .exp-form-group,  .exp-input-group{
+            input[type=number]::-webkit-inner-spin-button, 
+            input[type=number]::-webkit-outer-spin-button { 
+                -webkit-appearance: none; 
+                margin: 0; 
+            }
+
+            input[type="password"] {
+                font-family: caption;       
+                font-size: 1.5rem;
+                margin: 0;
+                padding-top: 22px;
+                letter-spacing: 4px;
+                line-height: .2
+            }
+        
+            input[type="search"]::-webkit-search-decoration,
+            input[type="search"]::-webkit-search-cancel-button,
+            input[type="search"]::-webkit-search-results-button,
+            input[type="search"]::-webkit-search-results-decoration {
+                -webkit-appearance:none;
+            }
+        }
+
         .exp-form-group {
             @include make-border($exp-medium-grey);
             @include border-top-radius($exp-border-radius); 
@@ -962,28 +993,6 @@
                 }
             }
 
-            input[type=number]::-webkit-inner-spin-button, 
-            input[type=number]::-webkit-outer-spin-button { 
-                -webkit-appearance: none; 
-                margin: 0; 
-            }
-
-            input[type="password"] {
-                font-family: caption;       
-                font-size: 1.5rem;
-                margin: 0;
-                padding-top: 22px;
-                letter-spacing: 4px;
-                line-height: .2
-            }
-        
-            input[type="search"]::-webkit-search-decoration,
-            input[type="search"]::-webkit-search-cancel-button,
-            input[type="search"]::-webkit-search-results-button,
-            input[type="search"]::-webkit-search-results-decoration {
-                -webkit-appearance:none;
-            }
-
             &.search {
                 padding-right: 1rem;
                 &:before {
@@ -1007,13 +1016,226 @@
                     color: $exp-light-blue
                 }
             }
-                
+            
         }
 
-    
-    
-    
+        .exp-input-group {
+            @include border-top-radius($exp-border-radius); 
+            @include border-bottom-radius($exp-border-radius);
 
+            .form-control {
+                @include make-border($exp-medium-grey);
+                @include border-top-radius($exp-border-radius); 
+                @include border-bottom-radius($exp-border-radius);
+                @include make-font(400); 
+                padding: 1.55rem 1rem;
+                background: transparent;
+                font-size: .875rem;
+                outline: 0;
+                appearance: none;
+                overflow: hidden;
 
+                &::placeholder {
+                    color: $exp-medium-grey;
+                    font-size: 1rem;
+                }
 
+                &:focus {
+                    outline: none;
+                    box-shadow: none;
+                }   
+            }
+            
+            .input-group-append .btn {
+                @include border-right-radius($exp-border-radius);
+            }
+            
+            .input-group-prepend .btn {
+                @include border-left-radius($exp-border-radius);
+            }
+
+            .input-group-prepend .btn, .input-group-append .btn {
+                padding: 0;
+
+                i {
+                    font-size: 2.5rem;
+                    padding: .6rem;
+                }
+
+                &:hover {
+                    color: $exp-white;
+                }
+
+                &:focus {
+                    outline: none;
+                    box-shadow: none;
+                }
+
+            }
+            
+            &.is-invalid {
+                @include make-border($exp-red);
+                .input-group-prepend .btn, .input-group-append .btn {
+                    background-color: $exp-red;
+                    border-color: $exp-red;
+                    color: $exp-white  !important;
+                }
+            }
+
+            &.is-valid {
+                @include make-border(theme-color('success'));
+                .input-group-prepend .btn, .input-group-append .btn {
+                    background-color: theme-color('success');
+                    border-color: theme-color('success');
+                    color: theme-color('success') !important;
+                }
+            }
+             
+        }
+
+        .exp-form-radio {
+            padding-left: 1.875rem;
+            margin-bottom: 0.75rem;
+            cursor: pointer;
+            font-size: 1rem;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+
+            input {
+                opacity: 0;
+                &:checked ~ .exp-radio {
+                    background-color: $exp-white;
+                }
+            }
+
+            input:checked ~ .exp-radio:after {
+                display: block;
+            }
+
+            .exp-radio {
+                position: absolute;
+                top: 2px;
+                left: 0;
+                height: 1.25rem;
+                width: 1.25rem;
+                background-color: $exp-white;
+                border-color:$exp-dark-grey;
+                border-style:solid;
+                border-width:.0625rem;
+                border-radius: 50%;
+                &:after {
+                    content: "";
+                    position: absolute;
+                    display: none;
+                }
+            }
+
+            .exp-radio:after {
+                left: 4px;
+                top: 4px;
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                background:$exp-light-blue;
+            }
+
+            &.is-invalid {
+                color: $exp-red;
+                .exp-radio {
+                    border-color:$exp-red;
+                }
+                .exp-radio:after {
+                    background:$exp-red;
+                }
+            }
+
+            &.is-valid {
+                color: theme-color('success');
+                .exp-radio {
+                    border-color:theme-color('success');
+                }
+                .exp-radio:after {
+                    background:theme-color('success');
+                }
+            }
+        }
+
+        .exp-form-checkbox {
+            display: block;
+            position: relative;
+            padding-left: 1.8rem;
+            margin-bottom: .75rem;
+            padding-right: .9375rem;
+            cursor: pointer;
+            font-size: 1rem;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+
+            input {
+                opacity: 0;
+
+                &:checked ~ .exp-checkbox {
+                    background-color: $exp-white;
+                }
+            }
+
+            input:checked ~ .exp-checkbox:after {
+                display: block;
+            }
+
+            .exp-checkbox {
+                position: absolute;
+                top: 3px;
+                left: 0;
+                height: 1.25rem;
+                width: 1.25rem;
+                background-color: $exp-white;
+                border-color:&$exp-dark-grey;
+                border-style:solid;
+                border-width:.0625rem;
+
+                &:after {
+                    content: "";
+                    position: absolute;
+                    display: none;
+                }
+            }
+
+            .exp-checkbox:after {
+                left: 7px;
+                top: 3px;
+                width: 5px;
+                height: 10px;
+                border: solid;
+                border-color:$exp-light-blue;
+                border-width: 0 3px 3px 0;
+                -webkit-transform: rotate(45deg);
+                -ms-transform: rotate(45deg);
+                transform: rotate(45deg);
+            }
+
+            &.is-invalid {
+                color: $exp-red;
+                .exp-checkbox {
+                    border-color:$exp-red;
+                }
+                .exp-checkbox:after {
+                    border-color:$exp-red;
+                }
+            }
+
+            &.is-valid {
+                color: theme-color('success');
+                .exp-checkbox {
+                    border-color:theme-color('success');
+                }
+                .exp-checkbox:after {
+                    border-color:theme-color('success');
+                }
+            }
+        }
 
