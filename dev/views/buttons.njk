@@ -1,6 +1,8 @@
 {% extends "../templates/layout.njk" %}
 {% set title="buttons" %}
 
+{% set primaryColors = ['exp-dark-blue', 'exp-light-blue', 'exp-violet', 'exp-purple', 'exp-pink'] %}
+
 {% block content %}
     <div class="row">
         <div class="col-12">
@@ -37,4 +39,37 @@
             <h3 class="text-exp-red">NB: Button hierarchy -> Hero, Body, form, spotlight buttons, solid buttons, outlined</h3>
         </div>
     </div>
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <hr/>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <h3>Other buttons. Only primary colors could be used for buttons.</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        {% for color in primaryColors %}
+            <div class="col mt-4">
+                <button class="btn btn-{{ color }}">
+                    btn btn-{{ color }}
+                </button>
+            </div>
+        {% endfor %}
+    </div>
+    
+    <div class="row mt-2">
+        {% for color in primaryColors %}
+            <div class="col mt-4">
+                <button class="btn btn-outline-{{ color }}">
+                    btn btn-{{ color }}
+                </button>
+            </div>
+        {% endfor %}
+    </div>
+
 {% endblock %}
